@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR Auto — Next-Gen YouTube Creator Automation Suite</title>
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              blue: '#3b82f6',
+              purple: '#8b5cf6',
+              dark: '#08090d',
+              card: '#11131a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glow-effect {
+      box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.35);
+    }
+    .neon-border {
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-[#07080c] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black overflow-x-hidden">
+
+  <!-- Background Ambient Mesh -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 blur-[120px] rounded-full"></div>
+    <div class="absolute top-1/2 right-0 w-[500px] h-[400px] bg-cyan-600/10 blur-[130px] rounded-full"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="relative z-50 border-b border-zinc-800/80 bg-[#08090d]/80 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+          <i data-lucide="play" class="w-5 h-5 text-black fill-black ml-0.5"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white">AR <span class="text-cyan-400">AUTO</span></span>
+          <span class="block text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Creator Automation Suite</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="#features" class="hover:text-cyan-400 transition-colors">ফিচারসমূহ</a>
+        <a href="#workflow" class="hover:text-cyan-400 transition-colors">কাজের নিয়ম</a>
+        <a href="#comparison" class="hover:text-cyan-400 transition-colors">পার্থক্য</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">প্রশ্নোত্তর</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/8801332368058" target="_blank" class="hidden sm:flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+          সাপোর্ট
+        </a>
+        <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/AR.Auto.Setup.1.0.0.exe" class="flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <i data-lucide="download" class="w-4 h-4 text-black"></i>
+          ফ্রি ডাউনলোড
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative z-10 pt-20 pb-24 px-6 text-center">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- High-Conversion Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-xs font-semibold mb-8 shadow-inner">
+        <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
+        YouTube কনটেন্ট ক্রিয়েটরদের জন্য তৈরি বিশেষ অটোমেশন ইঞ্জিন
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] mb-6">
+        ভয়েসওভার + ইমেজ = <br>
+        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+          ফুল ভিডিও অটো মেকিং!
+        </span>
+      </h1>
+
+      <!-- Hook & Slogan -->
+      <p class="text-xl sm:text-2xl font-bold text-zinc-200 mb-4">
+        নো বোরিং এডিটিং • নো ম্যানুয়াল কাট • নো টাইমলাইন ল্যাগ
+      </p>
+
+      <p class="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+        ঘণ্টার পর ঘণ্টা প্রিমিয়ার প্রোতে বসে ছবি কাটাছেঁড়া করার দিন শেষ। আপনার ভয়েসওভার ও ছবি ড্রপ করুন—স্বয়ংক্রিয় ক্যামেরা মোশন, ট্রানজিশন, সাউন্ড ডাকিং ও ক্যাপশন সহ হাই-রিটেনশন ৪K ভিডিও রেন্ডার হবে মাত্র এক ক্লিকে!
+      </p>
+
+      <!-- Primary CTA Button -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/AR.Auto.Setup.1.0.0.exe" class="w-full sm:w-auto flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] active:scale-[0.98] transition-all">
+          <i data-lucide="download" class="w-6 h-6"></i>
+          TRY FOR FREE (Windows)
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400 font-medium">
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> কোনো ক্রেডিট কার্ড লাগবে না</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> ৭ দিনের ফুল ফ্রি ট্রায়াল</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Windows 10 & 11 সাপোর্ট</span>
+      </div>
+
+      <!-- App Interface Preview Mockup -->
+      <div class="mt-16 relative rounded-3xl p-2.5 bg-gradient-to-b from-cyan-500/30 via-zinc-800 to-zinc-950 glow-effect">
+        <div class="bg-[#0e1017] rounded-2xl overflow-hidden border border-zinc-700/60 p-6 shadow-2xl">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6 text-left">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              <span class="ml-2 text-xs text-zinc-400 font-mono font-semibold">AR Auto Creator Suite v1.0.0 — [Active Project: 318 Clips Synced]</span>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/80 font-bold">4K 60FPS Hardware Native</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+            <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
+              <div class="text-cyan-400 text-xs font-bold uppercase mb-1">ধাপ ১: স্ক্রিপ্ট টু ইমেজ</div>
+              <div class="text-sm font-semibold text-white">স্বয়ংক্রিয় প্রম্পট ও টাইমস্ট্যাম্পিং</div>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
+              <div class="text-purple-400 text-xs font-bold uppercase mb-1">ধাপ ২: অটো ক্যামেরা মোশন</div>
+              <div class="text-sm font-semibold text-white">Ken-Burns ও সিনেমাটিক ইফেক্টস</div>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
+              <div class="text-emerald-400 text-xs font-bold uppercase mb-1">ধাপ ৩: ১-ক্লিক রেন্ডার</div>
+              <div class="text-sm font-semibold text-white">সরাসরি ইউটিউব-রেডি ৪K MP4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The 3-Step Formula -->
+  <section id="workflow" class="relative z-10 py-20 bg-[#090b10] border-y border-zinc-800/80">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">একটি ভিডিও বানাতে সময় লাগবে মাত্র ৩ মিনিট!</h2>
+        <p class="text-zinc-400 text-sm sm:text-base">সাধারণ এডিটরে যে ভিডিও বানাতে ৬-৮ ঘণ্টা লাগে, AR Auto-তে তা হবে মাত্র ৩টি সহজ ক্লিকে।</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-cyan-500/50 transition-all group">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">1</div>
+          <h3 class="text-xl font-bold text-white mb-3">ভয়েসওভার দিন</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">আপনার রেকর্ড করা অডিও ড্রপ করুন। সফটওয়্যার নিজে থেকেই স্পিচ বিশ্লেষণ করে প্রতিটি সেকেন্ডের নিখুঁত টাইমস্ট্যাম্প তৈরি করে ফেলবে।</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-blue-500/50 transition-all group">
+          <div class="w-14 h-14 rounded-2xl bg-blue-950/80 border border-blue-500/40 text-blue-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">2</div>
+          <h3 class="text-xl font-bold text-white mb-3">ইমেজ ফোল্ডার ড্রপ করুন</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">ছবির ফোল্ডারটি টাইমলাইনে ছেড়ে দিন। প্রতিটি ছবি স্বয়ংক্রিয়ভাবে অডিওর সঠিক সময়ে বসে যাবে। কোনো ম্যানুয়াল কাটিং বা ড্র্যাগিং লাগবে না!</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-purple-500/50 transition-all group">
+          <div class="w-14 h-14 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">3</div>
+          <h3 class="text-xl font-bold text-white mb-3">অটো ভিডিও এক্সপোর্ট</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">১ ক্লিকে অ্যানিমেশন, সিনেমাটিক ওভারলে এবং সাবটাইটেল যোগ করে সরাসরি FFmpeg ইঞ্জিনের সাহায্যে হাই-কোয়ালিটি ৪K ভিডিও রেন্ডার করে নিন।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Old Way vs New Way Comparison -->
+  <section id="comparison" class="relative z-10 py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">সাধারণ এডিটিং বনাম AR Auto</h2>
+        <p class="text-zinc-400 text-sm">পার্থক্যটা আপনি নিজের চোখেই দেখুন</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- The Old Way -->
+        <div class="p-8 rounded-2xl bg-red-950/10 border border-red-900/30">
+          <div class="flex items-center gap-2 text-red-400 font-bold text-lg mb-6">
+            <i data-lucide="x-circle" class="w-6 h-6"></i>
+            সাধারণ পুরোনো এডিটিং
+          </div>
+          <ul class="space-y-4 text-sm text-zinc-300">
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> একটি ২০ মিনিটের ভিডিওতে ৩০০+ ছবি হাতে কেটে বসাতে ৫-৮ ঘণ্টা নষ্ট।</li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> প্রতিটা ছবিতে আলাদাভাবে জুম ও প্যান অ্যানিমেশন দেওয়া চরম বিরক্তিকর।</li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> প্রজেক্ট বড় হলেই প্রিমিয়ার প্রো বা ক্যাপকাট হ্যাং ও ক্র্যাশ করে।</li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> জটিল সফটওয়্যার শিখতে মাসের পর মাস কোর্স করতে হয়।</li>
+          </ul>
+        </div>
+
+        <!-- The AR Auto Way -->
+        <div class="p-8 rounded-2xl bg-cyan-950/20 border border-cyan-500/40 glow-effect">
+          <div class="flex items-center gap-2 text-cyan-400 font-bold text-lg mb-6">
+            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+            AR Auto ম্যাজিক পদ্ধতি
+          </div>
+          <ul class="space-y-4 text-sm text-zinc-200 font-medium">
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> অডিও ও ছবির ফোল্ডার ড্রপ করলেই পুরো টাইমলাইন তৈরি মাত্র ২ সেকেন্ডে!</li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> ১০০+ ছবিতে এক ক্লিকে র্যান্ডম সিনেমাটিক মোশন ও ট্রানজিশন বসে যায়।</li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> ৫০০+ ছবি থাকলেও কোনো ল্যাগ নেই; লাইটওয়েট ও মাখনের মতো স্মুথ।</li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> কোনো কোর্স বা শেখার প্রয়োজন নেই; যেকেউ প্রথম দিন থেকেই প্রো!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (No Price Mentions) -->
+  <section id="faq" class="relative z-10 py-20 bg-[#090b10] border-t border-zinc-800">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-extrabold text-white mb-3">সাধারণ কিছু প্রশ্নের উত্তর</h2>
+        <p class="text-zinc-400 text-sm">সফটওয়্যারটি ব্যবহারের আগে জেনে নিন</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
+          <h4 class="font-bold text-white text-base mb-2">ফ্রি ট্রায়াল কীভাবে ব্যবহার করব?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed">সফটওয়্যারটি ডাউনলোড করে ইনস্টল করলেই আপনি সম্পূর্ণ ফ্রিতে ৭ দিনের জন্য সমস্ত প্রিমিয়াম ফিচার আনলিমিটেড ব্যবহার করতে পারবেন। কোনো ক্রেডিট কার্ড বা টাকা দেওয়া লাগবে না।</p>
+        </div>
+        <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
+          <h4 class="font-bold text-white text-base mb-2">ইউটিউবে কি মনিটাইজেশন পাওয়া যাবে?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed">১০০% মনিটাইজেশন পাবেন! কারণ এটি কোনো নকল ভিডিও নয়; আপনার নিজের তৈরি করা ভয়েসওভার ও ছবির ওপরই প্রফেশনাল এফএফএমপ্যাগ লাইব্রেরি দিয়ে আসল রেন্ডার করা ভিডিও তৈরি হয়।</p>
+        </div>
+        <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
+          <h4 class="font-bold text-white text-base mb-2">আমার কি ভালো মানের দামি কম্পিউটার লাগবে?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed">না! AR Auto বিশেষভাবে অপ্টিমাইজ করা হয়েছে যেন সাধারণ লো-এন্ড ও মাঝারি মানের ল্যাপটপেও শত শত ছবি দিয়ে দীর্ঘ ২০–৩০ মিনিটের ভিডিও কোনো ল্যাগ ছাড়াই স্মুথলি এডিট করা যায়।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Bar -->
+  <section class="relative z-10 py-24 text-center px-6">
+    <div class="max-w-4xl mx-auto rounded-3xl p-10 sm:p-16 bg-gradient-to-tr from-cyan-950/80 via-zinc-900 to-purple-950/80 border border-cyan-500/40 glow-effect">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">ম্যানুয়াল এডিটিং বন্ধ করুন, সময় বাঁচান!</h2>
+      <p class="text-zinc-300 text-base sm:text-lg mb-8 max-w-xl mx-auto">আজই ৭ দিনের সম্পূর্ণ ফ্রি ট্রায়াল দিয়ে আপনার ইউটিউব চ্যানেলের গতি ১০ গুণ বাড়িয়ে নিন।</p>
+      
+      <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/AR.Auto.Setup.1.0.0.exe" class="inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] transition-all">
+        <i data-lucide="download" class="w-6 h-6"></i>
+        DOWNLOAD AR AUTO (FREE TRIAL)
+      </a>
+      <p class="text-xs text-zinc-400 mt-4">Version 1.0.0 Official • Windows 64-bit • Direct Cloudflare High-Speed Download</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-zinc-800/80 py-10 bg-[#06070a] text-xs text-zinc-500 text-center">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 AR Auto Creator Suite. সর্বস্বত্ব সংরক্ষিত।
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://wa.me/8801332368058" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i> WhatsApp: +8801332368058
+        </a>
+        <a href="https://t.me/+8801332368058" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
