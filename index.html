@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="bn" class="dark scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Video Maker v2.1.0 — Next-Gen Automated 4K Video Creator</title>
+  <title id="pageTitle">Auto Video Maker v2.2.0 — Next-Gen Automated 4K Video Creator</title>
   <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
@@ -39,6 +39,20 @@
     .neon-border {
       border: 1px solid rgba(6, 182, 212, 0.3);
     }
+    /* Language Toggle Attention Animation */
+    @keyframes attentionPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.45);
+        border-color: rgba(6, 182, 212, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 16px 3px rgba(6, 182, 212, 0.55);
+        border-color: rgba(34, 211, 238, 0.9);
+      }
+    }
+    .lang-attention-glow {
+      animation: attentionPulse 2.8s infinite ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-[#07080c] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black overflow-x-hidden">
@@ -50,105 +64,144 @@
   </div>
 
   <!-- Navigation Bar -->
-  <header class="relative z-50 border-b border-zinc-800/80 bg-[#08090d]/80 backdrop-blur-md sticky top-0">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+  <header class="relative z-50 border-b border-zinc-800/80 bg-[#08090d]/85 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 shrink-0">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
           <i data-lucide="play" class="w-5 h-5 text-black fill-black ml-0.5"></i>
         </div>
         <div>
-          <span class="text-xl font-extrabold tracking-tight text-white">AUTO VIDEO <span class="text-cyan-400">MAKER</span></span>
-          <span class="block text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Automated 4K Video Creator</span>
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white">AUTO VIDEO <span class="text-cyan-400">MAKER</span></span>
+          <span class="block text-[10px] uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="tagline">Automated 4K Video Creator</span>
         </div>
-      </div>
+      </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
-        <a href="#features" class="hover:text-cyan-400 transition-colors">ফিচারসমূহ</a>
-        <a href="#workflow" class="hover:text-cyan-400 transition-colors">কাজের নিয়ম</a>
-        <a href="#comparison" class="hover:text-cyan-400 transition-colors">পার্থক্য</a>
-        <a href="#faq" class="hover:text-cyan-400 transition-colors">প্রশ্নোত্তর</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="#features" class="hover:text-cyan-400 transition-colors" data-i18n="nav_features">Features</a>
+        <a href="#workflow" class="hover:text-cyan-400 transition-colors" data-i18n="nav_workflow">How It Works</a>
+        <a href="#comparison" class="hover:text-cyan-400 transition-colors" data-i18n="nav_comparison">Comparison</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors" data-i18n="nav_faq">FAQ</a>
       </nav>
 
-      <div class="flex items-center gap-4">
-        <a href="https://wa.me/8801332368058" target="_blank" class="hidden sm:flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 transition-all">
+      <!-- Action Area: Language Toggle + Support + Download CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-3.5">
+        
+        <!-- Language Switcher Toggle (Prominent on Desktop & Mobile) -->
+        <div class="flex items-center">
+          <button
+            id="langToggleBtn"
+            type="button"
+            onclick="toggleLanguage()"
+            class="lang-attention-glow relative flex items-center p-1 rounded-xl bg-zinc-900/90 border border-cyan-500/50 text-xs font-bold transition-all shadow-lg hover:border-cyan-400 focus:outline-none cursor-pointer"
+            title="Switch Language / ভাষা পরিবর্তন করুন"
+            aria-label="Language Toggle"
+          >
+            <!-- Sliding Indicator -->
+            <div
+              id="langPill"
+              class="absolute top-1 left-1 bottom-1 w-[46px] rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-200 ease-out shadow-sm pointer-events-none"
+            ></div>
+            <span id="labelEn" class="relative z-10 w-[46px] text-center py-1 transition-colors text-black font-extrabold select-none">EN</span>
+            <span id="labelBn" class="relative z-10 w-[46px] text-center py-1 transition-colors text-zinc-400 font-semibold select-none">বাংলা</span>
+          </button>
+        </div>
+
+        <!-- WhatsApp Support Link -->
+        <a
+          href="https://wa.me/8801332368058"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 transition-all shrink-0"
+        >
           <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-          সাপোর্ট
+          <span data-i18n="support">Support</span>
         </a>
-        <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe" class="flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
+
+        <!-- Header Download CTA -->
+        <a
+          href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe"
+          class="flex items-center gap-2 text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
+        >
           <i data-lucide="download" class="w-4 h-4 text-black"></i>
-          ডাউনলোড v2.1.0
+          <span data-i18n="header_download_btn">Download v2.2.0</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative z-10 pt-20 pb-24 px-6 text-center">
+  <section class="relative z-10 pt-16 sm:pt-20 pb-20 sm:pb-24 px-4 sm:px-6 text-center">
     <div class="max-w-4xl mx-auto">
       
       <!-- New Release Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/50 text-cyan-300 text-xs font-semibold mb-8 shadow-inner">
-        <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
-        <span class="bg-cyan-400/20 text-cyan-300 px-2 py-0.5 rounded text-[11px] font-bold">NEW v2.1.0</span>
-        V2 ভিডিও ওভারলে, প্রিসিশন স্প্লিট ও আল্ট্রা-ফাস্ট GPU WebCodecs ইঞ্জিন যুক্ত হয়েছে!
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/50 text-cyan-300 text-xs font-semibold mb-8 shadow-inner max-w-full">
+        <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping shrink-0"></span>
+        <span class="bg-cyan-400/20 text-cyan-300 px-2 py-0.5 rounded text-[11px] font-bold shrink-0">NEW v2.2.0</span>
+        <span data-i18n="hero_badge_text" class="truncate sm:whitespace-normal">Native GPU WebCodecs Engine & Zero-RAM Direct Muxing</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] mb-6">
-        ভয়েসওভার + ছবি ড্রপ করলেই <br>
-        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-          ১০০% অটোমেটিক 4K ভিডিও!
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.18] sm:leading-[1.15] mb-6">
+        <span data-i18n="hero_headline_top">Drop Voiceover & Images</span><br>
+        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent" data-i18n="hero_headline_highlight">
+          Generate 100% Automated 4K Videos!
         </span>
       </h1>
 
       <!-- Hook & Slogan -->
-      <p class="text-xl sm:text-2xl font-bold text-zinc-200 mb-4">
-        নো বোরিং কি-ফ্রেমিং • নো ম্যানুয়াল কাট • নো টাইমলাইন ল্যাগ
+      <p class="text-lg sm:text-2xl font-bold text-zinc-200 mb-4" data-i18n="hero_slogan">
+        No Boring Keyframing • No Manual Trimming • Zero Timeline Lag
       </p>
 
-      <p class="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
-        ঘণ্টার পর ঘণ্টা প্রিমিয়ার প্রো বা ক্যাপকাটে বসে ছবি কাটাছেঁড়া করে সময় নষ্ট করবেন না। আপনার ভয়েসওভার ও স্টোরিবোর্ড ছবি ড্রপ করুন—স্বয়ংক্রিয় ক্যামেরা প্যান-জুম, সিনেমাটিক ওভারলে, সাবটাইটেল ও ব্যাকগ্রাউন্ড মিউজিক ডাকিং সহ হাই-রিটেনশন ৪K ভিডিও রেন্ডার হবে মাত্র এক ক্লিকে!
+      <p class="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-9 font-normal" data-i18n="hero_subtext">
+        Stop wasting hours cutting images inside Premiere Pro or CapCut. Simply drop your voiceover audio and storyboard images—automatic camera pan-zoom, cinematic overlays, precision subtitles, and background music ducking render into high-retention 4K videos in 1 click!
       </p>
 
       <!-- Primary CTA Button -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-        <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe" class="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] active:scale-[0.98] transition-all">
-          <i data-lucide="download" class="w-6 h-6"></i>
-          DOWNLOAD FREE (Windows 64-bit)
+        <a
+          href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe"
+          class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-base sm:text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] active:scale-[0.98] transition-all"
+        >
+          <i data-lucide="download" class="w-6 h-6 text-black shrink-0"></i>
+          <span data-i18n="hero_cta_btn">DOWNLOAD FREE (Windows 64-bit)</span>
         </a>
       </div>
 
       <!-- Trust Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400 font-medium">
-        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> কোনো ক্রেডিট কার্ডের প্রয়োজন নেই</span>
-        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> ৭ দিনের ফুল প্রিমিয়াম ফ্রি ট্রায়াল</span>
-        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Windows 10 & 11 সাপোর্টেড</span>
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-zinc-400 font-medium">
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> <span data-i18n="trust_card">No Credit Card Required</span></span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> <span data-i18n="trust_trial">7-Day Full Premium Free Trial</span></span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> <span data-i18n="trust_os">Windows 10 & 11 (64-bit)</span></span>
       </div>
 
       <!-- App Interface Preview Mockup -->
-      <div class="mt-16 relative rounded-3xl p-2.5 bg-gradient-to-b from-cyan-500/30 via-zinc-800 to-zinc-950 glow-effect">
-        <div class="bg-[#0e1017] rounded-2xl overflow-hidden border border-zinc-700/60 p-6 shadow-2xl">
-          <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6 text-left">
+      <div class="mt-14 sm:mt-16 relative rounded-3xl p-2 sm:p-2.5 bg-gradient-to-b from-cyan-500/30 via-zinc-800 to-zinc-950 glow-effect">
+        <div class="bg-[#0e1017] rounded-2xl overflow-hidden border border-zinc-700/60 p-4 sm:p-6 shadow-2xl">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6 text-left flex-wrap gap-2">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
               <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
               <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-              <span class="ml-2 text-xs text-zinc-400 font-mono font-semibold">Auto Video Maker v2.1.0 — [Multi-Track GPU Hardware Acceleration]</span>
+              <span class="ml-2 text-xs text-zinc-400 font-mono font-semibold" data-i18n="mockup_title">Auto Video Maker v2.2.0 — [Multi-Track GPU Hardware Acceleration]</span>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/80 font-bold">4K 60FPS GPU Native</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/80 font-bold shrink-0">4K 60FPS GPU Native</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
             <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
-              <div class="text-cyan-400 text-xs font-bold uppercase mb-1">১. অটো অডিও-ইমেজ সিঙ্ক</div>
-              <div class="text-sm font-semibold text-white">ভয়েসের গতি অনুযায়ী মিলি-সেকেন্ডে অটো কাট</div>
+              <div class="text-cyan-400 text-xs font-bold uppercase mb-1" data-i18n="mockup_c1_title">1. Auto Audio-Image Sync</div>
+              <div class="text-sm font-semibold text-white" data-i18n="mockup_c1_desc">Sub-second automatic cuts matching natural speech cadence</div>
             </div>
             <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
-              <div class="text-purple-400 text-xs font-bold uppercase mb-1">২. নতুন V2 ভিডিও লেয়ার</div>
-              <div class="text-sm font-semibold text-white">ফুটেজ ওভারলে, প্রিসিশন স্প্লিট ও ট্রিমিং</div>
+              <div class="text-purple-400 text-xs font-bold uppercase mb-1" data-i18n="mockup_c2_title">2. Multi-Layer Video Overlays</div>
+              <div class="text-sm font-semibold text-white" data-i18n="mockup_c2_desc">B-roll footage overlay, precision splitting & trimming</div>
             </div>
             <div class="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800">
-              <div class="text-emerald-400 text-xs font-bold uppercase mb-1">৩. আল্ট্রা-ফাস্ট 4K রেন্ডার</div>
-              <div class="text-sm font-semibold text-white">WebCodecs GPU মেমোরি-সেফ হাই-স্পিড এক্সপোর্ট</div>
+              <div class="text-emerald-400 text-xs font-bold uppercase mb-1" data-i18n="mockup_c3_title">3. Ultra-Fast 4K Export</div>
+              <div class="text-sm font-semibold text-white" data-i18n="mockup_c3_desc">WebCodecs GPU zero-RAM memory-safe direct export</div>
             </div>
           </div>
         </div>
@@ -157,73 +210,73 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="relative z-10 py-20 bg-[#090b10] border-y border-zinc-800/80">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">একটি ২০ মিনিটের ভিডিও বানাতে সময় লাগবে মাত্র ৩ মিনিট!</h2>
-        <p class="text-zinc-400 text-sm sm:text-base">সাধারণ ভিডিও এডিটরে যে কাজে পুরো দিন নষ্ট হতো, Auto Video Maker-এ তা হবে মাত্র ৩টি সহজ ক্লিকে।</p>
+  <!-- Features Section / 3-Step Workflow -->
+  <section id="features" class="relative z-10 py-16 sm:py-20 bg-[#090b10] border-y border-zinc-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4" data-i18n="features_headline">Create a 20-Minute Video in Just 3 Minutes!</h2>
+        <p class="text-zinc-400 text-sm sm:text-base" data-i18n="features_subheadline">What used to take an entire day in traditional video editors now takes just 3 simple steps in Auto Video Maker.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         <!-- Feature 1 -->
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-cyan-500/50 transition-all group">
-          <div class="w-14 h-14 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">1</div>
-          <h3 class="text-xl font-bold text-white mb-3">ভয়েসওভার ড্রপ করুন</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">আপনার অডিও বা ভয়েস ফাইলটি ড্রপ করুন। সফটওয়্যার স্বয়ংক্রিয়ভাবে স্পিচ বিশ্লেষণ করে প্রতিটি সেকেন্ডের নির্ভুল টাইমস্ট্যাম্প সেট করে নিবে।</p>
+        <div class="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-cyan-500/50 transition-all group">
+          <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">1</div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="step1_title">Drop Voiceover Track</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed" data-i18n="step1_desc">Drag and drop your audio or voice track. The software analyzes speech rhythm and sets accurate timestamps for every scene automatically.</p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-blue-500/50 transition-all group">
-          <div class="w-14 h-14 rounded-2xl bg-blue-950/80 border border-blue-500/40 text-blue-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">2</div>
-          <h3 class="text-xl font-bold text-white mb-3">ছবি ও ভিডিও লেয়ার দিন</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">স্টোরিবোর্ড ইমেজ এবং V2 ট্র্যাকে বি-রোল ভিডিও ছেড়ে দিন। সফটওয়্যার নিজে থেকেই কাট ও অ্যালাইনমেন্ট করে মাখনের মতো সাজিয়ে ফেলবে।</p>
+        <div class="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-blue-500/50 transition-all group">
+          <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-blue-950/80 border border-blue-500/40 text-blue-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">2</div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="step2_title">Add Images & Video Layers</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed" data-i18n="step2_desc">Drop in your storyboard images and B-roll video footage. Auto Video Maker automatically aligns and layers them with butter-smooth timing.</p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-purple-500/50 transition-all group">
-          <div class="w-14 h-14 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">3</div>
-          <h3 class="text-xl font-bold text-white mb-3">১-ক্লিক অটো এক্সপোর্ট</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">র‍্যান্ডম ক্যামেরা মোশন, ট্রানজিশন ও ডাইনামিক সাবটাইটেল যোগ করে সরাসরি জিপিইউ হার্ডওয়্যার এনকোডারে রেডি-টু-আপলোড ৪K ভিডিও ডাউনলোড করুন।</p>
+        <div class="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-purple-500/50 transition-all group">
+          <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-purple-950/80 border border-purple-500/40 text-purple-400 flex items-center justify-center text-xl font-extrabold mb-6 group-hover:scale-110 transition-transform">3</div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-3" data-i18n="step3_title">1-Click Auto Export</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed" data-i18n="step3_desc">Apply randomized cinematic camera motions, transitions, and dynamic subtitles. Export ready-to-upload 4K videos directly on your GPU.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Old Way vs New Way Comparison -->
-  <section id="comparison" class="relative z-10 py-24 px-6">
+  <section id="comparison" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">সাধারণ এডিটিং বনাম Auto Video Maker</h2>
-        <p class="text-zinc-400 text-sm">পার্থক্যটা আপনি নিজের চোখেই দেখুন</p>
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3" data-i18n="comparison_headline">Traditional Editing vs Auto Video Maker</h2>
+        <p class="text-zinc-400 text-sm sm:text-base" data-i18n="comparison_subheadline">See the difference with your own eyes</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <!-- The Old Way -->
-        <div class="p-8 rounded-2xl bg-red-950/10 border border-red-900/30">
-          <div class="flex items-center gap-2 text-red-400 font-bold text-lg mb-6">
-            <i data-lucide="x-circle" class="w-6 h-6"></i>
-            সাধারণ পুরোনো ম্যানুয়াল পদ্ধতি
+        <div class="p-6 sm:p-8 rounded-2xl bg-red-950/10 border border-red-900/30">
+          <div class="flex items-center gap-2 text-red-400 font-bold text-base sm:text-lg mb-6">
+            <i data-lucide="x-circle" class="w-6 h-6 shrink-0"></i>
+            <span data-i18n="comp_old_title">Traditional Manual Editing</span>
           </div>
           <ul class="space-y-4 text-sm text-zinc-300">
-            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> একটি ২০ মিনিটের ভিডিওতে ৪০০+ ছবি হাতে কেটে মেলাতে ৬-৮ ঘণ্টা নষ্ট।</li>
-            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> প্রতিটি ছবিতে আলাদাভাবে জুম ও প্যান অ্যানিমেশন কি-ফ্রেম করা চরম বিরক্তির।</li>
-            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> প্রজেক্ট বড় হলেই প্রিমিয়ার প্রো বা ক্যাপকাট ক্র্যাশ ও মেমোরি ল্যাগ করে।</li>
-            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold">✕</span> জটিল ইন্টারফেস শিখতে দীর্ঘ সময় নষ্ট ও টিম ম্যানেজমেন্টের ঝামেলা।</li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold shrink-0">✕</span> <span data-i18n="comp_old_1">Spending 6–8 hours manually cutting 400+ images for a 20-minute video.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold shrink-0">✕</span> <span data-i18n="comp_old_2">Tedious, repetitive keyframing for pan and zoom animations on every single image.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold shrink-0">✕</span> <span data-i18n="comp_old_3">Premiere Pro or CapCut lagging and crashing on large timelines.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-red-400 font-bold shrink-0">✕</span> <span data-i18n="comp_old_4">Complex interfaces that take weeks to learn and slow down team workflows.</span></li>
           </ul>
         </div>
 
         <!-- The Auto Video Maker Way -->
-        <div class="p-8 rounded-2xl bg-cyan-950/20 border border-cyan-500/40 glow-effect">
-          <div class="flex items-center gap-2 text-cyan-400 font-bold text-lg mb-6">
-            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-            Auto Video Maker ম্যাজিক পদ্ধতি
+        <div class="p-6 sm:p-8 rounded-2xl bg-cyan-950/20 border border-cyan-500/40 glow-effect">
+          <div class="flex items-center gap-2 text-cyan-400 font-bold text-base sm:text-lg mb-6">
+            <i data-lucide="check-circle-2" class="w-6 h-6 shrink-0"></i>
+            <span data-i18n="comp_new_title">Auto Video Maker Automated Workflow</span>
           </div>
           <ul class="space-y-4 text-sm text-zinc-200 font-medium">
-            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> অডিও ও ছবির ফোল্ডার ড্রপ করলেই পুরো টাইমলাইন তৈরি মাত্র ২ সেকেন্ডে!</li>
-            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> ৪০০+ ছবিতে এক ক্লিকে র্যান্ডম সিনেমাটিক মোশন ও ট্রানজিশন বসে যায়।</li>
-            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> নতুন V2 লেয়ারে সহজেই বি-রোল ভিডিও ওভারলে ও স্প্লিট করা যায়।</li>
-            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold">✓</span> কোনো কোর্স বা শেখার দরকার নেই; যেকেউ প্রথম দিন থেকেই প্রো!</li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold shrink-0">✓</span> <span data-i18n="comp_new_1">Drop audio and image folders to generate an entire timeline in just 2 seconds!</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold shrink-0">✓</span> <span data-i18n="comp_new_2">Instant 1-click cinematic camera motions and transitions across 400+ images.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold shrink-0">✓</span> <span data-i18n="comp_new_3">Seamless multi-layer B-roll video overlay, split, and trimming.</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-cyan-400 font-bold shrink-0">✓</span> <span data-i18n="comp_new_4">No learning curve or courses needed; anyone produces professional videos from day one!</span></li>
           </ul>
         </div>
       </div>
@@ -231,63 +284,245 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="relative z-10 py-20 bg-[#090b10] border-t border-zinc-800">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl font-extrabold text-white mb-3">সাধারণ কিছু প্রশ্নের উত্তর</h2>
-        <p class="text-zinc-400 text-sm">সফটওয়্যারটি ব্যবহারের আগে জেনে নিন</p>
+  <section id="faq" class="relative z-10 py-16 sm:py-20 bg-[#090b10] border-t border-zinc-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 sm:mb-14">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3" data-i18n="faq_headline">Frequently Asked Questions</h2>
+        <p class="text-zinc-400 text-sm" data-i18n="faq_subheadline">Everything you need to know before getting started</p>
       </div>
 
       <div class="space-y-4">
         <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
-          <h4 class="font-bold text-white text-base mb-2">ফ্রি ট্রায়াল কীভাবে ব্যবহার করব?</h4>
-          <p class="text-sm text-zinc-400 leading-relaxed">সফটওয়্যারটি ডাউনলোড করে ইনস্টল করলেই আপনি সম্পূর্ণ ফ্রিতে ৭ দিনের জন্য সমস্ত প্রিমিয়াম ফিচার আনলিমিটেড ব্যবহার করতে পারবেন। কোনো ক্রেডিট কার্ড বা পেমেন্ট তথ্য দেওয়া লাগবে না।</p>
+          <h4 class="font-bold text-white text-base mb-2" data-i18n="faq_q1">How does the free trial work?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed" data-i18n="faq_a1">Simply download and install the software. You get full, unlimited access to all premium features for 7 days. No credit card or payment information required.</p>
         </div>
         <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
-          <h4 class="font-bold text-white text-base mb-2">ইউটিউবে কি মনিটাইজেশন পাওয়া যাবে?</h4>
-          <p class="text-sm text-zinc-400 leading-relaxed">১০০% মনিটাইজেশন পাবেন! এটি কোনো র্যান্ডম এআই ফেক ভিডিও নয়; আপনার নিজের ভয়েসওভার ও স্টোরিবোর্ড ছবির ওপরই জিপিইউ অ্যাক্সিলারেটেড হাই-কোয়ালিটি ভিডিও রেন্ডার তৈরি হয়।</p>
+          <h4 class="font-bold text-white text-base mb-2" data-i18n="faq_q2">Can videos made with this software be monetized on YouTube?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed" data-i18n="faq_a2">100% yes! This does not produce synthetic AI fake videos. It produces genuine high-quality video renders from your own voiceover and storyboard assets, which YouTube monetizes without issue.</p>
         </div>
         <div class="p-5 rounded-xl bg-zinc-900/80 border border-zinc-800">
-          <h4 class="font-bold text-white text-base mb-2">সাধারণ মানের ল্যাপটপ বা কম্পিউটারে চলবে?</h4>
-          <p class="text-sm text-zinc-400 leading-relaxed">হ্যাঁ! Auto Video Maker বিশেষভাবে মেমোরি-সেফ করে তৈরি, যার ফলে সাধারণ ৮GB র‍্যামযুক্ত ল্যাপটপেও শত শত ছবি দিয়ে দীর্ঘ ২০–৩০ মিনিটের প্রজেক্ট কোনো হ্যাং বা ক্র্যাশ ছাড়াই স্মুথলি এডিট করা যায়।</p>
+          <h4 class="font-bold text-white text-base mb-2" data-i18n="faq_q3">Does it run on standard laptops and budget PCs?</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed" data-i18n="faq_a3">Yes! Auto Video Maker is engineered with a zero-RAM streaming architecture. It smoothly renders long 20–30 minute projects with hundreds of images even on standard 8GB RAM laptops with integrated AMD/Intel graphics without crashing or freezing.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Final CTA Bar -->
-  <section class="relative z-10 py-24 text-center px-6">
-    <div class="max-w-4xl mx-auto rounded-3xl p-10 sm:p-16 bg-gradient-to-tr from-cyan-950/80 via-zinc-900 to-purple-950/80 border border-cyan-500/40 glow-effect">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">ম্যানুয়াল এডিটিং বন্ধ করুন, সময় বাঁচান!</h2>
-      <p class="text-zinc-300 text-base sm:text-lg mb-8 max-w-xl mx-auto">আজই ৭ দিনের সম্পূর্ণ ফ্রি ট্রায়াল দিয়ে আপনার ফেসলেস ইউটিউব চ্যানেলের গতি ১০ গুণ বাড়িয়ে নিন।</p>
+  <section class="relative z-10 py-16 sm:py-24 text-center px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto rounded-3xl p-8 sm:p-16 bg-gradient-to-tr from-cyan-950/80 via-zinc-900 to-purple-950/80 border border-cyan-500/40 glow-effect">
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4" data-i18n="final_cta_headline">Stop Editing Manually. Start Saving Hours Today!</h2>
+      <p class="text-zinc-300 text-sm sm:text-lg mb-8 max-w-xl mx-auto" data-i18n="final_cta_subtext">Boost your YouTube production speed 10x with your 7-day completely free trial.</p>
       
-      <a href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe" class="inline-flex items-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] transition-all">
-        <i data-lucide="download" class="w-6 h-6"></i>
-        DOWNLOAD AUTO VIDEO MAKER (v2.1.0)
+      <a
+        href="https://pub-086fa4abe0bc40308448169690a30cc6.r2.dev/Auto.Video.Maker.Setup.2.2.0.exe"
+        class="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 hover:from-cyan-300 hover:to-purple-400 text-black font-extrabold text-base sm:text-lg shadow-xl shadow-cyan-500/30 hover:scale-[1.03] transition-all"
+      >
+        <i data-lucide="download" class="w-6 h-6 text-black shrink-0"></i>
+        <span data-i18n="final_download_btn">DOWNLOAD AUTO VIDEO MAKER (v2.2.0)</span>
       </a>
-      <p class="text-xs text-zinc-400 mt-4">Version 2.1.0 Official • Windows 10 & 11 (64-bit) • Direct High-Speed Download</p>
+      <p class="text-xs text-zinc-400 mt-4" data-i18n="final_badge">Version 2.2.0 Official • Windows 10 & 11 (64-bit) • Direct High-Speed Download</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="relative z-10 border-t border-zinc-800/80 py-10 bg-[#06070a] text-xs text-zinc-500 text-center">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © 2026 Auto Video Maker. সর্বস্বত্ব সংরক্ষিত।
+        <span data-i18n="footer_copyright">© 2026 Auto Video Maker. All rights reserved.</span>
       </div>
       <div class="flex items-center gap-6">
-        <a href="https://wa.me/8801332368058" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
-          <i data-lucide="phone" class="w-3.5 h-3.5"></i> WhatsApp: +8801332368058
+        <a href="https://wa.me/8801332368058" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i> <span>WhatsApp: +8801332368058</span>
         </a>
-        <a href="https://t.me/+8801332368058" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
-          <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
+        <a href="https://t.me/+8801332368058" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i> <span>Telegram</span>
         </a>
       </div>
     </div>
   </footer>
 
+  <!-- Bilingual Internationalization Script -->
   <script>
-    lucide.createIcons();
+    const translations = {
+      en: {
+        page_title: "Auto Video Maker v2.2.0 — Next-Gen Automated 4K Video Creator",
+        tagline: "Automated 4K Video Creator",
+        nav_features: "Features",
+        nav_workflow: "How It Works",
+        nav_comparison: "Comparison",
+        nav_faq: "FAQ",
+        support: "Support",
+        header_download_btn: "Download v2.2.0",
+        hero_badge_text: "Native GPU WebCodecs Engine & Zero-RAM Direct Muxing",
+        hero_headline_top: "Drop Voiceover & Images",
+        hero_headline_highlight: "Generate 100% Automated 4K Videos!",
+        hero_slogan: "No Boring Keyframing • No Manual Trimming • Zero Timeline Lag",
+        hero_subtext: "Stop wasting hours cutting images inside Premiere Pro or CapCut. Simply drop your voiceover audio and storyboard images—automatic camera pan-zoom, cinematic overlays, precision subtitles, and background music ducking render into high-retention 4K videos in 1 click!",
+        hero_cta_btn: "DOWNLOAD FREE (Windows 64-bit)",
+        trust_card: "No Credit Card Required",
+        trust_trial: "7-Day Full Premium Free Trial",
+        trust_os: "Windows 10 & 11 (64-bit)",
+        mockup_title: "Auto Video Maker v2.2.0 — [Multi-Track GPU Hardware Acceleration]",
+        mockup_c1_title: "1. Auto Audio-Image Sync",
+        mockup_c1_desc: "Sub-second automatic cuts matching natural speech cadence",
+        mockup_c2_title: "2. Multi-Layer Video Overlays",
+        mockup_c2_desc: "B-roll footage overlay, precision splitting & trimming",
+        mockup_c3_title: "3. Ultra-Fast 4K Export",
+        mockup_c3_desc: "WebCodecs GPU zero-RAM memory-safe direct export",
+        features_headline: "Create a 20-Minute Video in Just 3 Minutes!",
+        features_subheadline: "What used to take an entire day in traditional video editors now takes just 3 simple steps in Auto Video Maker.",
+        step1_title: "Drop Voiceover Track",
+        step1_desc: "Drag and drop your audio or voice track. The software analyzes speech rhythm and sets accurate timestamps for every scene automatically.",
+        step2_title: "Add Images & Video Layers",
+        step2_desc: "Drop in your storyboard images and B-roll video footage. Auto Video Maker automatically aligns and layers them with butter-smooth timing.",
+        step3_title: "1-Click Auto Export",
+        step3_desc: "Apply randomized cinematic camera motions, transitions, and dynamic subtitles. Export ready-to-upload 4K videos directly on your GPU.",
+        comparison_headline: "Traditional Editing vs Auto Video Maker",
+        comparison_subheadline: "See the difference with your own eyes",
+        comp_old_title: "Traditional Manual Editing",
+        comp_old_1: "Spending 6–8 hours manually cutting 400+ images for a 20-minute video.",
+        comp_old_2: "Tedious, repetitive keyframing for pan and zoom animations on every single image.",
+        comp_old_3: "Premiere Pro or CapCut lagging and crashing on large timelines.",
+        comp_old_4: "Complex interfaces that take weeks to learn and slow down team workflows.",
+        comp_new_title: "Auto Video Maker Automated Workflow",
+        comp_new_1: "Drop audio and image folders to generate an entire timeline in just 2 seconds!",
+        comp_new_2: "Instant 1-click cinematic camera motions and transitions across 400+ images.",
+        comp_new_3: "Seamless multi-layer B-roll video overlay, split, and trimming.",
+        comp_new_4: "No learning curve or courses needed; anyone produces professional videos from day one!",
+        faq_headline: "Frequently Asked Questions",
+        faq_subheadline: "Everything you need to know before getting started",
+        faq_q1: "How does the free trial work?",
+        faq_a1: "Simply download and install the software. You get full, unlimited access to all premium features for 7 days. No credit card or payment information required.",
+        faq_q2: "Can videos made with this software be monetized on YouTube?",
+        faq_a2: "100% yes! This does not produce synthetic AI fake videos. It produces genuine high-quality video renders from your own voiceover and storyboard assets, which YouTube monetizes without issue.",
+        faq_q3: "Does it run on standard laptops and budget PCs?",
+        faq_a3: "Yes! Auto Video Maker is engineered with a zero-RAM streaming architecture. It smoothly renders long 20–30 minute projects with hundreds of images even on standard 8GB RAM laptops with integrated AMD/Intel graphics without crashing or freezing.",
+        final_cta_headline: "Stop Editing Manually. Start Saving Hours Today!",
+        final_cta_subtext: "Boost your YouTube production speed 10x with your 7-day completely free trial.",
+        final_download_btn: "DOWNLOAD AUTO VIDEO MAKER (v2.2.0)",
+        final_badge: "Version 2.2.0 Official • Windows 10 & 11 (64-bit) • Direct High-Speed Download",
+        footer_copyright: "© 2026 Auto Video Maker. All rights reserved."
+      },
+      bn: {
+        page_title: "Auto Video Maker v2.2.0 — স্বয়ংক্রিয় 4K ভিডিও মেকার",
+        tagline: "অটোমেটেড 4K ভিডিও ক্রিয়েটর",
+        nav_features: "ফিচারসমূহ",
+        nav_workflow: "কাজের নিয়ম",
+        nav_comparison: "পার্থক্য",
+        nav_faq: "প্রশ্নোত্তর",
+        support: "সাপোর্ট",
+        header_download_btn: "ডাউনলোড v2.2.0",
+        hero_badge_text: "নেটিভ GPU WebCodecs ইঞ্জিন ও মেমোরি-সেফ ডিরেক্ট মাক্সিং",
+        hero_headline_top: "ভয়েসওভার + ছবি ড্রপ করলেই",
+        hero_headline_highlight: "১০০% অটোমেটিক 4K ভিডিও!",
+        hero_slogan: "নো বোরিং কি-ফ্রেমিং • নো ম্যানুয়াল কাট • নো টাইমলাইন ল্যাগ",
+        hero_subtext: "ঘণ্টার পর ঘণ্টা প্রিমিয়ার প্রো বা ক্যাপকাটে বসে ছবি কাটাছেঁড়া করে সময় নষ্ট করবেন না। আপনার ভয়েসওভার ও স্টোরিবোর্ড ছবি ড্রপ করুন—স্বয়ংক্রিয় ক্যামেরা প্যান-জুম, সিনেমাটিক ওভারলে, সাবটাইটেল ও ব্যাকগ্রাউন্ড মিউজিক ডাকিং সহ হাই-রিটেনশন ৪K ভিডিও রেন্ডার হবে মাত্র এক ক্লিকে!",
+        hero_cta_btn: "ফ্রি ডাউনলোড করুন (Windows 64-bit)",
+        trust_card: "কোনো ক্রেডিট কার্ডের প্রয়োজন নেই",
+        trust_trial: "৭ দিনের ফুল প্রিমিয়াম ফ্রি ট্রায়াল",
+        trust_os: "Windows 10 & 11 সাপোর্টেড",
+        mockup_title: "Auto Video Maker v2.2.0 — [মাল্টি-ট্র্যাক GPU হার্ডওয়্যার অ্যাক্সিলারেশন]",
+        mockup_c1_title: "১. অটো অডিও-ইমেজ সিঙ্ক",
+        mockup_c1_desc: "ভয়েসের গতি অনুযায়ী মিলি-সেকেন্ডে অটো কাট",
+        mockup_c2_title: "২. মাল্টি-লেয়ার ভিডিও ওভারলে",
+        mockup_c2_desc: "ফুটেজ ওভারলে, প্রিসিশন স্প্লিট ও ট্রিমিং",
+        mockup_c3_title: "৩. আল্ট্রা-ফাস্ট 4K রেন্ডার",
+        mockup_c3_desc: "WebCodecs GPU মেমোরি-সেফ হাই-স্পিড এক্সপোর্ট",
+        features_headline: "একটি ২০ মিনিটের ভিডিও বানাতে সময় লাগবে মাত্র ৩ মিনিট!",
+        features_subheadline: "সাধারণ ভিডিও এডিটরে যে কাজে পুরো দিন নষ্ট হতো, Auto Video Maker-এ তা হবে মাত্র ৩টি সহজ ক্লিকে।",
+        step1_title: "ভয়েসওভার ড্রপ করুন",
+        step1_desc: "আপনার অডিও বা ভয়েস ফাইলটি ড্রপ করুন। সফটওয়্যার স্বয়ংক্রিয়ভাবে স্পিচ বিশ্লেষণ করে প্রতিটি সেকেন্ডের নির্ভুল টাইমস্ট্যাম্প সেট করে নিবে।",
+        step2_title: "ছবি ও ভিডিও লেয়ার দিন",
+        step2_desc: "স্টোরিবোর্ড ইমেজ এবং V2 ট্র্যাকে বি-রোল ভিডিও ছেড়ে দিন। সফটওয়্যার নিজে থেকেই কাট ও অ্যালাইনমেন্ট করে মাখনের মতো সাজিয়ে ফেলবে।",
+        step3_title: "১-ক্লিক অটো এক্সপোর্ট",
+        step3_desc: "র‍্যান্ডম ক্যামেরা মোশন, ট্রানজিশন ও ডাইনামিক সাবটাইটেল যোগ করে সরাসরি জিপিইউ হার্ডওয়্যার এনকোডারে রেডি-টু-আপলোড ৪K ভিডিও ডাউনলোড করুন।",
+        comparison_headline: "সাধারণ এডিটিং বনাম Auto Video Maker",
+        comparison_subheadline: "পার্থক্যটা আপনি নিজের চোখেই দেখুন",
+        comp_old_title: "সাধারণ পুরোনো ম্যানুয়াল পদ্ধতি",
+        comp_old_1: "একটি ২০ মিনিটের ভিডিওতে ৪০০+ ছবি হাতে কেটে মেলাতে ৬-৮ ঘণ্টা নষ্ট।",
+        comp_old_2: "প্রতিটি ছবিতে আলাদাভাবে জুম ও প্যান অ্যানিমেশন কি-ফ্রেম করা চরম বিরক্তির।",
+        comp_old_3: "প্রজেক্ট বড় হলেই প্রিমিয়ার প্রো বা ক্যাপকাট ক্র্যাশ ও মেমোরি ল্যাগ করে।",
+        comp_old_4: "জটিল ইন্টারফেস শিখতে দীর্ঘ সময় নষ্ট ও টিম ম্যানেজমেন্টের ঝামেলা।",
+        comp_new_title: "Auto Video Maker ম্যাজিক পদ্ধতি",
+        comp_new_1: "অডিও ও ছবির ফোল্ডার ড্রপ করলেই পুরো টাইমলাইন তৈরি মাত্র ২ সেকেন্ডে!",
+        comp_new_2: "৪০০+ ছবিতে এক ক্লিকে র্যান্ডম সিনেমাটিক মোশন ও ট্রানজিশন বসে যায়।",
+        comp_new_3: "নতুন V2 লেয়ারে সহজেই বি-রোল ভিডিও ওভারলে ও স্প্লিট করা যায়।",
+        comp_new_4: "কোনো কোর্স বা শেখার দরকার নেই; যেকেউ প্রথম দিন থেকেই প্রো!",
+        faq_headline: "সাধারণ কিছু প্রশ্নের উত্তর",
+        faq_subheadline: "সফটওয়্যারটি ব্যবহারের আগে জেনে নিন",
+        faq_q1: "ফ্রি ট্রায়াল কীভাবে ব্যবহার করব?",
+        faq_a1: "সফটওয়্যারটি ডাউনলোড করে ইনস্টল করলেই আপনি সম্পূর্ণ ফ্রিতে ৭ দিনের জন্য সমস্ত প্রিমিয়াম ফিচার আনলিমিটেড ব্যবহার করতে পারবেন। কোনো ক্রেডিট কার্ড বা পেমেন্ট তথ্য দেওয়া লাগবে না।",
+        faq_q2: "ইউটিউবে কি মনিটাইজেশন পাওয়া যাবে?",
+        faq_a2: "১০০% মনিটাইজেশন পাবেন! এটি কোনো র্যান্ডম এআই ফেক ভিডিও নয়; আপনার নিজের ভয়েসওভার ও স্টোরিবোর্ড ছবির ওপরই জিপিইউ অ্যাক্সিলারেটেড হাই-কোয়ালিটি ভিডিও রেন্ডার তৈরি হয়।",
+        faq_q3: "সাধারণ মানের ল্যাপটপ বা কম্পিউটারে চলবে?",
+        faq_a3: "হ্যাঁ! Auto Video Maker বিশেষভাবে মেমোরি-সেফ করে তৈরি, যার ফলে সাধারণ ৮GB র‍্যামযুক্ত ল্যাপটপেও শত শত ছবি দিয়ে দীর্ঘ ২০–৩০ মিনিটের প্রজেক্ট কোনো হ্যাং বা ক্র্যাশ ছাড়াই স্মুথলি এডিট করা যায়।",
+        final_cta_headline: "ম্যানুয়াল এডিটিং বন্ধ করুন, সময় বাঁচান!",
+        final_cta_subtext: "আজই ৭ দিনের সম্পূর্ণ ফ্রি ট্রায়াল দিয়ে আপনার ফেসলেস ইউটিউব চ্যানেলের গতি ১০ গুণ বাড়িয়ে নিন।",
+        final_download_btn: "ডাউনলোড করুন AUTO VIDEO MAKER (v2.2.0)",
+        final_badge: "Version 2.2.0 Official • Windows 10 & 11 (64-bit) • ডিরেক্ট হাই-স্পিড ডাউনলোড",
+        footer_copyright: "© 2026 Auto Video Maker. সর্বস্বত্ব সংরক্ষিত।"
+      }
+    };
+
+    // Default language is English on fresh load
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      
+      const t = translations[lang] || translations.en;
+      
+      // Update page title
+      const titleEl = document.getElementById('pageTitle');
+      if (titleEl && t.page_title) titleEl.innerText = t.page_title;
+
+      // Update all elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.innerText = t[key];
+        }
+      });
+
+      // Update toggle pill position & label styling
+      const pill = document.getElementById('langPill');
+      const labelEn = document.getElementById('labelEn');
+      const labelBn = document.getElementById('labelBn');
+
+      if (lang === 'en') {
+        pill.style.transform = 'translateX(0px)';
+        labelEn.classList.add('text-black', 'font-extrabold');
+        labelEn.classList.remove('text-zinc-400', 'font-semibold');
+        labelBn.classList.add('text-zinc-400', 'font-semibold');
+        labelBn.classList.remove('text-black', 'font-extrabold');
+      } else {
+        pill.style.transform = 'translateX(47px)';
+        labelBn.classList.add('text-black', 'font-extrabold');
+        labelBn.classList.remove('text-zinc-400', 'font-semibold');
+        labelEn.classList.add('text-zinc-400', 'font-semibold');
+        labelEn.classList.remove('text-black', 'font-extrabold');
+      }
+
+      // Re-initialize Lucide Icons after DOM updates
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function toggleLanguage() {
+      const nextLang = currentLang === 'en' ? 'bn' : 'en';
+      setLanguage(nextLang);
+    }
+
+    // Initialize English by default on fresh page load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage('en');
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
   </script>
 </body>
 </html>
